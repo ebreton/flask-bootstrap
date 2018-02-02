@@ -3,7 +3,7 @@
 # or in .env
 FLASK_DEBUG ?= 0
 
-.PHONY: init check-env vars test dev gunicorn
+.PHONY: init vars coverage run gunicorn local deploy
 
 vars:
 	@echo 'Environment-related vars:'
@@ -39,22 +39,22 @@ init-heroku:
 test: check-env
 	flake8 src --max-line-length=120
 	pytest --cov=. test
+
+coverage: test
 	coverage html
 	open htmlcov/index.html
 
-deploy:
-	git push heroku master
-
-dev: check-env
-	flake8 src --max-line-length=120
-	pytest --cov=. -x test
+run: test
 	flask run
 
-gunicorn: check-env
+gunicorn: test
 	gunicorn ${GUNICORN_APP}
 
-local:
+local: test
 	heroku local -p 7000
+
+deploy: test
+	git push heroku master
 
 check-env:
 ifeq ($(wildcard .env),)
