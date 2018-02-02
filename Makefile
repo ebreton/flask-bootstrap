@@ -32,6 +32,7 @@ endif
 
 init-heroku:
 	heroku create ${HEROKU_APP} || true
+	heroku config:set PYTHONPATH="./src"
 	heroku config:set MAIL_USERNAME="${MAIL_USERNAME}"
 	@heroku config:set MAIL_PASSWORD="${MAIL_PASSWORD}" > /dev/null
 
