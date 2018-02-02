@@ -3,22 +3,37 @@
 # or in .env
 FLASK_DEBUG ?= 0
 
-.PHONY: check-env vars run test dev
+.PHONY: init check-env vars test dev gunicorn
 
 vars:
 	@echo 'Environment-related vars:'
 	@echo '  PYTHONPATH=${PYTHONPATH}'
-	@echo '  GUNICORN_APP=${GUNICORN_APP}'
 	@echo '  FLASK_APP=${FLASK_APP}'
 	@echo '  FLASK_DEBUG=${FLASK_DEBUG}'
+	@echo '  GUNICORN_APP=${GUNICORN_APP}'
+	@echo ''
+	@echo 'Heroku-related vars:'
+	@echo '  HEROKU_APP=${HEROKU_APP}'
+	@echo '  HEROKU_URL=${HEROKU_URL}'
+	@echo '  HEROKU_GIT=${HEROKU_GIT}'
+	@echo '  FLASK_CONFIG=${FLASK_CONFIG}'
+	@echo '  MAIL_USERNAME=${MAIL_USERNAME}'
+	@echo '  MAIL_PASSWORD=xxx'
 
-run: check-env
-	gunicorn ${GUNICORN_APP}
+init: init-venv init-heroku
 
-dev: check-env
-	flake8 src --max-line-length=120
-	pytest --cov=. -x test
-	flask run
+init-venv:
+ifeq ($(wildcard .env),)
+	cp .env.sample .env
+	echo PYTHONPATH=`pwd`/src >> .env
+endif
+	pipenv --update 
+	pipenv update --dev --python 3
+
+init-heroku:
+	heroku create ${HEROKU_APP} || true
+	heroku config:set MAIL_USERNAME="${MAIL_USERNAME}"
+	@heroku config:set MAIL_PASSWORD="${MAIL_PASSWORD}" > /dev/null
 
 test: check-env
 	flake8 src --max-line-length=120
@@ -26,11 +41,19 @@ test: check-env
 	coverage html
 	open htmlcov/index.html
 
-venv:
-	cp .env.sample .env
-	echo PYTHONPATH=`pwd`/src >> .env
-	pipenv --update 
-	pipenv update --dev --python 3
+deploy:
+	git push heroku master
+
+dev: check-env
+	flake8 src --max-line-length=120
+	pytest --cov=. -x test
+	flask run
+
+gunicorn: check-env
+	gunicorn ${GUNICORN_APP}
+
+local:
+	heroku local -p 7000
 
 check-env:
 ifeq ($(wildcard .env),)
