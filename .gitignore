@@ -58,9 +58,6 @@ local_settings.py
 instance/
 .webassets-cache
 
-fbapp/static/tmp
-*.db
-
 # Scrapy stuff:
 .scrapy
 

@@ -38,7 +38,7 @@ init-heroku:
 
 test: check-env
 	flake8 src --max-line-length=120
-	pytest --cov=. test
+	pytest --cov=src test
 
 coverage: test
 	coverage html
