@@ -1,4 +1,8 @@
 from flask import Flask
+
+from settings import VERSION
+
+
 app = Flask(__name__)
 
 
@@ -9,9 +13,9 @@ def index():
 
 @app.route('/hello')
 def hello():
-    return 'Hello, World'
+    return b'Hello, World'
 
 
-@app.route('/hello/<username>')
-def user(username='World'):
-    return 'Hello, {}'.format(username)
+@app.route('/version')
+def version():
+    return VERSION
