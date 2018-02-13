@@ -3,11 +3,10 @@
   <img src="./docs/static/logo.png"
        alt="Flask Bootstrap"
        width="200">
-  <p>Flask bootstrap</p>
 </h1>
 
 <h4 align="center">
-  Offer yourselv a head start for your next flask app
+  Offer yourself a head start <br /> for your next flask app
 </h4>
 
 <p align="center">
@@ -32,8 +31,11 @@
  
 ### Main features
 
-- **Dev friendly**: A Makefile will allow to quickly setup the dev environment. The application can be run locally with hot reloading of the code, or without. With DB or without. Emulating Heroku context or not. `make deploy` will push the app online.
-- **Out-of-the-box** deployment to Heroku
+- **Dev friendly**: A Makefile will allow to quickly setup the dev environment.
+  - The application can be run locally with hot reloading of the code, or without.
+  - Emulating Heroku context or not.
+  - With DB or without.
+- **Out-of-the-box** deployment to Heroku with `make deploy`
 - **Support for DB**... but... **not mandatory**. 
 - **Configuration through environement variables** in a `.env` file: mainly for Heroku, and storage type.
 - **Automated** testing and deployment: connected to Travis and Codecov, relies on Heroku toolbelt for deployment.
