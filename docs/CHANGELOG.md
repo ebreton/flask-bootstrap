@@ -19,7 +19,7 @@ Table of releases
 ## [0.2.x] - 2018-02-13
 
 1. Added Documentation
-1. Created python objects for events and storage
+1. Created python objects for greetings and storage
 1. Enable database storage with STORAGE_TYPE and DATABASE_URL
 1. Added support for sqlite3 & postgreSQL (through SQLAlchemy)
 1. Created endpoints and simple GUI
