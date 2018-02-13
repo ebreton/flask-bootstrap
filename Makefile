@@ -6,7 +6,12 @@ FLASK_DEBUG ?= 0
 .PHONY: init vars coverage run gunicorn local deploy
 
 vars:
-	@echo 'Environment-related vars:'
+	@echo 'App-related vars:'
+	@echo '  APP_SECRET=${APP_SECRET}'
+	@echo '  STORAGE_TYPE=${STORAGE_TYPE}'
+	@echo '  DATABASE_URL=${DATABASE_URL}'
+	@echo ''
+	@echo 'Dev-related vars:'
 	@echo '  PYTHONPATH=${PYTHONPATH}'
 	@echo '  FLASK_APP=${FLASK_APP}'
 	@echo '  FLASK_DEBUG=${FLASK_DEBUG}'
@@ -16,11 +21,9 @@ vars:
 	@echo '  HEROKU_APP=${HEROKU_APP}'
 	@echo '  HEROKU_URL=${HEROKU_URL}'
 	@echo '  HEROKU_GIT=${HEROKU_GIT}'
-	@echo '  FLASK_CONFIG=${FLASK_CONFIG}'
-	@echo '  MAIL_USERNAME=${MAIL_USERNAME}'
-	@echo '  MAIL_PASSWORD=xxx'
-
-init: init-venv init-heroku
+	@echo '  DB_URI_VAR_NAME=${DB_URI_VAR_NAME}'
+	@echo '  HEROKU_USERNAME=${HEROKU_USERNAME}'
+	@echo '  HEROKU_PASSWORD=xxx'
 
 init-venv:
 ifeq ($(wildcard .env),)
@@ -29,12 +32,24 @@ ifeq ($(wildcard .env),)
 endif
 	pipenv --update 
 	pipenv update --dev --python 3
+	@echo "-> Set up your .env file before launching make init-heroku"
 
 init-heroku:
 	heroku create ${HEROKU_APP} || true
 	heroku config:set PYTHONPATH="./src"
-	heroku config:set MAIL_USERNAME="${MAIL_USERNAME}"
-	@heroku config:set MAIL_PASSWORD="${MAIL_PASSWORD}" > /dev/null
+	heroku config:set FLASK_DEBUG=0
+	heroku config:set APP_SECRET="${APP_SECRET}"
+	heroku config:set MAIL_USERNAME="${HEROKU_USERNAME}"
+	@heroku config:set MAIL_PASSWORD="${HEROKU_PASSWORD}" > /dev/null
+	heroku config:set STORAGE_TYPE="models.storage"
+	heroku addons:add heroku-postgresql:hobby-dev
+	@echo "-> Replace HEROKU_APP vars in your .env file"
+	@echo "-> Run 'heroku run init' when done"
+
+info:
+	heroku apps
+	heroku addons
+	heroku config
 
 test: check-env
 	flake8 src --max-line-length=120
@@ -48,10 +63,14 @@ run: test
 	flask run
 
 gunicorn: test
-	gunicorn ${GUNICORN_APP}
+ifeq (,$(wildcard ./src/gunicorn.db))
+	STORAGE_TYPE=models.storage DATABASE_URL=sqlite:///gunicorn.db python src/commands.py init-db
+endif
+	STORAGE_TYPE=models.storage DATABASE_URL=sqlite:///gunicorn.db gunicorn ${GUNICORN_APP}
 
-local: test
-	heroku local -p 7000
+heroku: test
+	STORAGE_TYPE=models.storage DATABASE_URL=postgres://127.0.0.1/$(whoami) python src/commands.py init-db
+	STORAGE_TYPE=models.storage DATABASE_URL=postgres://127.0.0.1/$(whoami) heroku local -p 7000
 
 deploy: test
 	git push heroku master
