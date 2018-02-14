@@ -31,16 +31,19 @@
  
 ### Main features
 
-- **Dev friendly**: A Makefile will allow to quickly setup the dev environment.
-  - The application can be run locally with hot reloading of the code, or without.
-  - Emulating Heroku context or not.
-  - With DB or without.
-- **Out-of-the-box** deployment to Heroku with `make deploy`
-- **Support for Bootstrap3**, thanks to [flask-bootsrap](https://pythonhosted.org/Flask-Bootstrap/basic-usage.html)
-- **Support for DB**... but... **not mandatory**. 
+- **Dev friendly**: a Makefile will allow to quickly setup everything with `make init-venv`
+- **Multiple runners**:
+  - Ran locally with hot reloading of the code with `make deploy`
+  - Or still locally, but a step closer to production with `make gunicorn`
+  - Or emulating Heroku context with `make heroku`
+  - Or even hosted on Heroku with `make deploy`
+  - Al this... with DB or without.
+- **Support for DB** thanks to [flask-SQLalchemy](http://flask-sqlalchemy.pocoo.org/2.3/)... but... **not mandatory**. 
 - **Configuration through environement variables** in a `.env` file: mainly for Heroku, and storage type.
 - **Automated** testing and deployment: connected to Travis and Codecov, relies on Heroku toolbelt for deployment.
-- **Comes with a basic frontend** 
+- **Support for Bootstrap3**, thanks to [flask-bootstrap](https://pythonhosted.org/Flask-Bootstrap/basic-usage.html)
+- **Easy creation of your navigation** with [flask-nav](http://pythonhosted.org/flask-nav/)
+- **Comes with a basic frontend**, from the bootstrap example ['sticky footer with fixed navbar'](https://getbootstrap.com/docs/3.3/examples/sticky-footer-navbar/)
 
 ### You said 'optionnal' DB?
 
