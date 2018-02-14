@@ -36,6 +36,7 @@
   - Emulating Heroku context or not.
   - With DB or without.
 - **Out-of-the-box** deployment to Heroku with `make deploy`
+- **Support for Bootstrap3**, thanks to [flask-bootsrap](https://pythonhosted.org/Flask-Bootstrap/basic-usage.html)
 - **Support for DB**... but... **not mandatory**. 
 - **Configuration through environement variables** in a `.env` file: mainly for Heroku, and storage type.
 - **Automated** testing and deployment: connected to Travis and Codecov, relies on Heroku toolbelt for deployment.

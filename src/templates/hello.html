@@ -1,0 +1,36 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/utils.html" as utils %}
+
+{% block title %}This is an example page{% endblock %}
+{% block html_attribs %} lang="en"{% endblock %}
+{% block styles %} 
+    {{ super() }}
+    <link rel="stylesheet" href="{{url_for('static', filename='css/sticky-footer-navbar.css')}}">
+{% endblock %}
+
+{% block navbar %}
+    {{nav.main_nav.render()}}
+{% endblock %}
+
+{% block content %}
+    <!-- Flash messages -->
+    {{ utils.flashed_messages() }}
+
+    <!-- Begin page content -->
+    <div class="container">
+        <div class="page-header">
+            <h1>Hello, Flask</h1>
+        </div>
+        <p class="lead">
+            Pin a fixed-height footer to the bottom of the viewport in desktop browsers with this custom HTML and CSS. A fixed navbar has been added with
+            <code>padding-top: 60px;</code> on the
+            <code>body &gt; .container</code>.
+        </p>
+    </div>
+    
+    <footer class="footer">
+        <div class="container">
+            <p class="text-muted">Place sticky footer content here.</p>
+        </div>
+    </footer>
+{% endblock %}
