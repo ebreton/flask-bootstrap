@@ -1,6 +1,6 @@
 from hello import create_app
 
-app, storage = create_app(storage_type="models.storage")
+app, nav, storage = create_app(storage_type="models.storage")
 app.app_context().push()
 storage.init_db()
 

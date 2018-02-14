@@ -14,6 +14,4 @@ def test_urls():
 def test_version():
     with app.test_client() as client:
         resp = client.get('/version')
-        assert resp.get_data() == bytes(VERSION, encoding='utf8')
-        # hello World !
-        client.get('/hello').get_data() == b'Hello, World'
+        assert b'Redirecting...' in resp.get_data()
