@@ -37,7 +37,7 @@
   - Or still locally, but a step closer to production with `make gunicorn`
   - Or emulating Heroku context with `make heroku`
   - Or even hosted on Heroku with `make deploy`
-  - Al this... with DB or without.
+  - All this... with or without DB :balloon:
 - **Support for DB** thanks to [flask-SQLalchemy](http://flask-sqlalchemy.pocoo.org/2.3/)... but... **not mandatory**. 
 - **Configuration through environement variables** in a `.env` file: mainly for Heroku, and storage type.
 - **Automated** testing and deployment: connected to Travis and Codecov, relies on Heroku toolbelt for deployment.
