@@ -29,7 +29,7 @@
 </p>
 <br>
 
-## Looking for something lighter ?
+### Looking for something lighter ?
 
 Like a bootstrap for a simple new python project with a simple CLI ? Check [PyBootstrap](https://github.com/ebreton/pybootstrap)...
 
@@ -49,23 +49,23 @@ Like a bootstrap for a simple new python project with a simple CLI ? Check [PyBo
 - **Easy creation of your navigation** with [flask-nav](http://pythonhosted.org/flask-nav/)
 - **Comes with a basic frontend**, from the bootstrap example ['sticky footer with fixed navbar'](https://getbootstrap.com/docs/3.3/examples/sticky-footer-navbar/)
 
-### You said 'optionnal' DB?
+#### You said 'optionnal' DB?
 
 If persistent storage is needed: will use postgreSQL with Heroku by default. Also works without DB, in which case the data will be stored in memory, until next restart of the application
 
-### Something is missing ?
+#### Something is missing ?
 
 Head to [githup issues](https://github.com/ebreton/flaskbootstrap/issues) and submit one ! Be sure to have a look at the [CONTRIBUTING.md](./docs/CONTRIBUTING.md) guide before
 
-## Install and Usage
+### Install and Usage
 
 Check out [INSTALL.md](./docs/INSTALL.md) for more details
 
-## Changelog
+### Changelog
 
 All notable changes to this project are documented in [CHANGELOG.md](./docs/CHANGELOG.md).
 
-## Contribution
+### Contribution
 
 Check out [CONTRIBUTING.md](./docs/CONTRIBUTING.md) for more details
 
