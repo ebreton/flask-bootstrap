@@ -28,7 +28,11 @@
   </a>
 </p>
 <br>
- 
+
+## Looking for something lighter ?
+
+Like a bootstrap for a simple new python project with a simple CLI ? Check [PyBootstrap](https://github.com/ebreton/pybootstrap)...
+
 ### Main features
 
 - **Dev friendly**: a Makefile will allow to quickly setup everything with `make init-venv`
