@@ -1,8 +1,6 @@
 from flask import url_for
 from hello import app
 
-from settings import VERSION
-
 
 def test_urls():
     with app.test_request_context():
