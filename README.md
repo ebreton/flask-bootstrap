@@ -10,19 +10,19 @@
 </h4>
 
 <p align="center">
-  <a href="https://github.com/ebreton/flaskbootstrap/blob/master/docs/CHANGELOG.md">
-    <img src="https://img.shields.io/github/release/ebreton/flaskbootstrap.svg"
+  <a href="https://github.com/ebreton/flask-bootstrap/blob/master/docs/CHANGELOG.md">
+    <img src="https://img.shields.io/github/release/ebreton/flask-bootstrap.svg"
          alt="Changelog">
   </a>
-  <a href="https://travis-ci.org/ebreton/flaskbootstrap">
-    <img src="https://travis-ci.org/ebreton/flaskbootstrap.svg?branch=master"
+  <a href="https://travis-ci.org/ebreton/flask-bootstrap">
+    <img src="https://travis-ci.org/ebreton/flask-bootstrap.svg?branch=master"
          alt="Travis">
   </a>
-  <a href="https://codecov.io/gh/ebreton/flaskbootstrap">
-    <img src="https://codecov.io/gh/ebreton/flaskbootstrap/branch/master/graph/badge.svg"
+  <a href="https://codecov.io/gh/ebreton/flask-bootstrap">
+    <img src="https://codecov.io/gh/ebreton/flask-bootstrap/branch/master/graph/badge.svg"
          alt="Codecov" />
   </a>
-  <a href="https://github.com/ebreton/flaskbootstrap/blob/master/LICENSE">
+  <a href="https://github.com/ebreton/flask-bootstrap/blob/master/LICENSE">
     <img src="https://img.shields.io/badge/license-MIT-blue.svg"
          alt="License" />
   </a>
@@ -55,7 +55,7 @@ If persistent storage is needed: will use postgreSQL with Heroku by default. Als
 
 #### Something is missing ?
 
-Head to [githup issues](https://github.com/ebreton/flaskbootstrap/issues) and submit one ! Be sure to have a look at the [CONTRIBUTING.md](./docs/CONTRIBUTING.md) guide before
+Head to [githup issues](https://github.com/ebreton/flask-bootstrap/issues) and submit one ! Be sure to have a look at the [CONTRIBUTING.md](./docs/CONTRIBUTING.md) guide before
 
 ### Install and Usage
 

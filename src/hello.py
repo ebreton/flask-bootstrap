@@ -57,7 +57,7 @@ def main_nav():
         View('Home', 'index'),
         View('Flush', 'flush', size=2),
         View('Version', 'version'),
-        Link('Github', 'https://github.com/ebreton/flaskbootstrap'),
+        Link('Github', 'https://github.com/ebreton/flask-bootstrap'),
     )
 
 

@@ -63,7 +63,7 @@ You may download, clone or fork the project.
 
 The following line clone it, and change your current working directory into it:
 
-    $ git clone git@github.com:ebreton/flaskbootstrap.git your-app-name
+    $ git clone git@github.com:ebreton/flask-bootstrap.git your-app-name
     ...
     $ cd your-app-name
 
@@ -88,7 +88,7 @@ This repository will launch a instance on Heroku. This section explains how to c
 
 The configuration occurs through environment variables, in the `.env` file.
 
-The [`.env.sample` file](https://github.com/ebreton/flaskbootstrap/blob/master/.env.sample) contains documentation for each variable:
+The [`.env.sample` file](https://github.com/ebreton/flask-bootstrap/blob/master/.env.sample) contains documentation for each variable:
 
 - exemple of values
 - explanation
