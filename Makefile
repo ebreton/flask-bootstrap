@@ -1,5 +1,5 @@
 #!make
-# Default values, can be overridden either on the command line of make
+# Default values, can be overridden either on the command line
 # or in .env
 FLASK_DEBUG ?= 0
 
